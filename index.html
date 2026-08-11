@@ -1319,6 +1319,44 @@ img{content-visibility:auto}
 .calc-chart-section{margin-top:18px;padding-top:18px;border-top:1px solid var(--line)}.calc-chart-section h3{margin:0 0 5px;font-size:16px}.calc-chart-section>p{margin:0 0 13px;color:var(--muted);font-size:12px}.calc-overall-chart,.calc-period-chart{display:grid;gap:10px}.calc-chart-row{display:grid;grid-template-columns:minmax(100px,160px) minmax(0,1fr) 48px;gap:10px;align-items:center}.calc-chart-label{font-size:12px;font-weight:850;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.calc-chart-track{height:12px;border-radius:99px;background:var(--soft);overflow:hidden;border:1px solid var(--line)}.calc-chart-fill{display:block;height:100%;border-radius:inherit;min-width:0}.calc-chart-value{text-align:right;font-size:12px;font-weight:900}.calc-period-block{padding:12px;border:1px solid var(--line);border-radius:14px;background:var(--soft)}.calc-period-head{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:9px}.calc-period-head strong{font-size:12px}.calc-period-head small{color:var(--muted)}.calc-period-parties{display:grid;gap:7px}.calc-period-party{display:grid;grid-template-columns:minmax(85px,130px) minmax(0,1fr) 42px;gap:8px;align-items:center}.calc-period-party span{font-size:11px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.calc-period-party i{display:block;height:8px;border-radius:99px}.calc-period-party b{text-align:right;font-size:11px}.calc-chart-empty{padding:18px;border:1px dashed var(--line);border-radius:13px;color:var(--muted);text-align:center;font-size:12px}
 @media(max-width:700px){.calc-shell{padding:19px}.calc-screen h2{font-size:24px}.calc-question{font-size:21px}.calc-answers{grid-template-columns:1fr}.calc-admin-party-row,.calc-admin-question-head,.calc-party-answer-row{grid-template-columns:1fr}.calc-admin-party-row button,.calc-admin-question-head button{width:100%}.calc-result{grid-template-columns:40px minmax(0,1fr) 62px}.calc-result-logo{width:40px;height:40px}.calc-result-percent{font-size:17px}.calc-stats-grid{grid-template-columns:1fr}.calc-party-stat{grid-template-columns:1fr}.calc-submission-head{align-items:stretch;flex-direction:column}.calc-submission-head button{width:100%}}
 </style>
+<style id="v134-article-hero-fix">
+/* v134 – jednotný rozmer fotografie v popupe správy a jemné spodné stratenie */
+#articleModalContent .article-hero{
+ width:100%!important;
+ height:min(506px,calc((100vw - 36px) * .5625))!important;
+ min-height:190px;
+ max-height:none!important;
+ object-fit:cover!important;
+ object-position:center center;
+ display:block;
+ -webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 82%,rgba(0,0,0,.72) 90%,transparent 100%);
+ mask-image:linear-gradient(to bottom,#000 0%,#000 82%,rgba(0,0,0,.72) 90%,transparent 100%);
+}
+#articleModalContent .article-hero + .article-content{
+ position:relative;
+ z-index:1;
+ margin-top:-54px;
+ padding-top:62px;
+}
+@media(max-width:480px){
+ #articleModalContent .article-hero{min-height:180px}
+ #articleModalContent .article-hero + .article-content{margin-top:-40px;padding-top:48px}
+}
+</style>
+<style id="weather136Style">
+/* v136 – vlastné počasie Pulse pre všetky krajské mestá */
+.weather-layer136{position:fixed;inset:0;z-index:7500;display:grid;place-items:center;padding:18px;background:rgba(5,9,17,.76);backdrop-filter:blur(12px)}
+.weather-layer136.hidden{display:none!important}.weather-shell136{width:min(1180px,100%);height:min(92dvh,900px);display:grid;grid-template-rows:auto auto minmax(0,1fr);overflow:hidden;border:1px solid var(--line);border-radius:24px;background:var(--card);box-shadow:0 35px 110px rgba(0,0,0,.45)}
+.weather-head136{display:flex;align-items:center;gap:13px;padding:16px 18px;border-bottom:1px solid var(--line)}.weather-title136{min-width:0;flex:1}.weather-title136 h2{margin:0;font-size:22px;letter-spacing:-.3px}.weather-title136 p{margin:4px 0 0;color:var(--muted);font-size:11px}.weather-updated136{font-size:10px;color:var(--muted);white-space:nowrap}.weather-refresh136,.weather-close136{width:42px;height:42px;flex:0 0 auto;border:0;border-radius:50%;background:var(--soft);color:var(--text);display:grid;place-items:center}.weather-refresh136{font-size:20px}.weather-refresh136.loading{animation:weatherSpin136 .8s linear infinite}.weather-close136{font-size:25px;line-height:1}@keyframes weatherSpin136{to{transform:rotate(360deg)}}
+.weather-cities136{display:flex;gap:8px;overflow-x:auto;padding:11px 14px;border-bottom:1px solid var(--line);scrollbar-width:thin}.weather-cities136 button{flex:0 0 auto;border:1px solid var(--line);border-radius:999px;padding:9px 13px;background:var(--soft);color:var(--text);font-size:12px;font-weight:850}.weather-cities136 button.active{border-color:var(--red);background:var(--red);color:#fff}
+.weather-content136{min-height:0;overflow:auto;padding:20px}.weather-daybar136{display:flex;gap:8px;overflow-x:auto;margin-bottom:16px;padding-bottom:2px}.weather-daybar136 button{flex:1 0 115px;border:1px solid var(--line);border-radius:13px;padding:10px;background:var(--soft);color:var(--text);font-weight:850}.weather-daybar136 button small{display:block;margin-top:3px;color:var(--muted);font-size:9px}.weather-daybar136 button.active{border-color:var(--red);box-shadow:0 0 0 2px color-mix(in srgb,var(--red) 14%,transparent);background:color-mix(in srgb,var(--red) 7%,var(--card))}.weather-daybar136 button.active small{color:var(--red)}
+.weather-overview136{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.weather-city-card136{position:relative;overflow:hidden;border:1px solid var(--line);border-radius:18px;padding:17px;background:linear-gradient(145deg,color-mix(in srgb,#1677d2 6%,var(--card)),var(--card));color:var(--text);text-align:left}.weather-city-card136:hover{border-color:color-mix(in srgb,#1677d2 45%,var(--line));transform:translateY(-1px)}.weather-card-top136{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}.weather-card-top136 strong{font-size:16px}.weather-icon136{font-size:38px;line-height:1}.weather-condition136{margin:13px 0 5px;font-size:12px;color:var(--muted);text-transform:capitalize}.weather-temp136{display:flex;align-items:baseline;gap:8px}.weather-temp136 b{font-size:30px;letter-spacing:-1px}.weather-temp136 span{font-size:13px;color:var(--muted)}.weather-metrics136{display:flex;gap:12px;margin-top:13px;padding-top:12px;border-top:1px solid var(--line);font-size:11px;color:var(--muted)}
+.weather-detail-head136{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin-bottom:15px}.weather-detail-head136 h3{margin:0;font-size:25px}.weather-detail-head136 p{margin:4px 0 0;color:var(--muted);font-size:11px}.weather-back136{border:1px solid var(--line);border-radius:11px;padding:9px 12px;background:var(--soft);color:var(--text);font-size:11px;font-weight:850}.weather-forecast136{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:11px}.weather-day-card136{border:1px solid var(--line);border-radius:18px;padding:17px 14px;background:var(--soft);text-align:center}.weather-day-card136.today{border-color:var(--red);background:color-mix(in srgb,var(--red) 6%,var(--card))}.weather-day-card136 strong,.weather-day-card136 small{display:block}.weather-day-card136 small{margin-top:4px;color:var(--muted);font-size:9px}.weather-day-card136 .weather-icon136{margin:19px 0 12px;font-size:47px}.weather-day-card136 .weather-condition136{min-height:30px;margin:0 0 11px}.weather-day-card136 .weather-temp136{justify-content:center}.weather-day-card136 .weather-metrics136{justify-content:center;flex-wrap:wrap;gap:7px 12px}
+.weather-state136{min-height:300px;display:grid;place-items:center;text-align:center;color:var(--muted)}.weather-state136 b{display:block;color:var(--text);font-size:17px;margin-bottom:6px}.weather-state136 button{margin-top:12px}.weather-foot136{margin:18px 2px 0;color:var(--muted);font-size:9px;text-align:right}.weather-foot136 a{color:inherit}.weather-mobile136{display:none!important}
+@media(max-width:1100px){.weather-mobile136{display:grid!important}.weather-overview136{grid-template-columns:repeat(2,minmax(0,1fr))}.weather-forecast136{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:650px){.weather-layer136{padding:0}.weather-shell136{width:100%;height:100dvh;border:0;border-radius:0}.weather-head136{padding:12px}.weather-title136 h2{font-size:18px}.weather-title136 p,.weather-updated136{display:none}.weather-cities136{padding:9px 10px}.weather-cities136 button{padding:8px 11px}.weather-content136{padding:14px}.weather-overview136{grid-template-columns:1fr}.weather-forecast136{grid-template-columns:1fr 1fr}.weather-day-card136:last-child{grid-column:1/-1}.weather-detail-head136 h3{font-size:21px}.weather-refresh136,.weather-close136{width:38px;height:38px}}
+@media(max-width:390px){.weather-forecast136{grid-template-columns:1fr}.weather-day-card136:last-child{grid-column:auto}}
+</style>
 </head>
 <body>
 <svg height="0" style="position:absolute" width="0">
@@ -6205,6 +6243,52 @@ document.addEventListener('visibilitychange',()=>{if(!document.hidden)renderStat
 window.addEventListener('appinstalled',()=>setTimeout(renderStatus,100));
 setInterval(()=>{if(q('#profilePwaSettings131')){ensure();renderStatus()}},2500);
 setTimeout(ensure,500);
+})();
+</script>
+<script id="weather136Script">
+(()=>{
+'use strict';
+const q=(s,r=document)=>r.querySelector(s),qa=(s,r=document)=>[...r.querySelectorAll(s)];
+const cities=[
+ {name:'Bratislava',lat:48.1486,lon:17.1077},{name:'Trnava',lat:48.3774,lon:17.5872},
+ {name:'Trenčín',lat:48.8945,lon:18.0444},{name:'Nitra',lat:48.3064,lon:18.0764},
+ {name:'Žilina',lat:49.2231,lon:18.7394},{name:'Banská Bystrica',lat:48.7363,lon:19.1462},
+ {name:'Prešov',lat:48.9984,lon:21.2393},{name:'Košice',lat:48.7164,lon:21.2611}
+];
+const API=`https://api.open-meteo.com/v1/forecast?latitude=${cities.map(x=>x.lat).join(',')}&longitude=${cities.map(x=>x.lon).join(',')}&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max,wind_speed_10m_max&timezone=Europe%2FBratislava&forecast_days=5`;
+const CACHE='pulse_weather_v136',MAX_AGE=30*60*1000;
+let forecast=null,selectedCity=-1,selectedDay=0,previousOverflow='';
+const weatherInfo=code=>{
+ const c=Number(code);if(c===0)return['☀️','jasno'];if(c===1)return['🌤️','prevažne jasno'];if(c===2)return['⛅','polooblačno'];if(c===3)return['☁️','zamračené'];if([45,48].includes(c))return['🌫️','hmla'];if([51,53,55,56,57].includes(c))return['🌦️','mrholenie'];if([61,63,65,66,67].includes(c))return['🌧️','dážď'];if([71,73,75,77].includes(c))return['🌨️','sneženie'];if([80,81,82].includes(c))return['🌦️','prehánky'];if([85,86].includes(c))return['🌨️','snehové prehánky'];if([95,96,99].includes(c))return['⛈️','búrky'];return['🌤️','premenlivé počasie'];
+};
+const dayName=(iso,long=false)=>new Intl.DateTimeFormat('sk-SK',long?{weekday:'long',day:'numeric',month:'long'}:{weekday:'short'}).format(new Date(iso+'T12:00:00'));
+const shortDate=iso=>new Intl.DateTimeFormat('sk-SK',{day:'numeric',month:'numeric'}).format(new Date(iso+'T12:00:00'));
+const round=v=>Math.round(Number(v)||0);
+function ensureLayer(){
+ let layer=q('#weatherLayer136');if(layer)return layer;
+ layer=document.createElement('div');layer.id='weatherLayer136';layer.className='weather-layer136 hidden';layer.setAttribute('role','dialog');layer.setAttribute('aria-modal','true');layer.setAttribute('aria-labelledby','weatherTitle136');
+ layer.innerHTML=`<section class="weather-shell136"><header class="weather-head136"><div class="weather-title136"><h2 id="weatherTitle136">Počasie</h2><p>Predpoveď pre všetky krajské mestá na dnes a nasledujúce dni</p></div><span class="weather-updated136" id="weatherUpdated136"></span><button class="weather-refresh136" id="weatherRefresh136" type="button" title="Obnoviť údaje" aria-label="Obnoviť počasie">↻</button><button class="weather-close136" id="weatherClose136" type="button" aria-label="Zavrieť počasie">×</button></header><nav class="weather-cities136" aria-label="Krajské mestá"><button type="button" class="active" data-weather-city136="-1">Prehľad</button>${cities.map((x,i)=>`<button type="button" data-weather-city136="${i}">${x.name}</button>`).join('')}</nav><div class="weather-content136" id="weatherContent136"></div></section>`;
+ document.body.append(layer);q('#weatherClose136').onclick=closeWeather;q('#weatherRefresh136').onclick=()=>loadWeather(true);layer.onclick=e=>{if(e.target===layer)closeWeather()};qa('[data-weather-city136]',layer).forEach(b=>b.onclick=()=>selectCity(Number(b.dataset.weatherCity136)));return layer;
+}
+function cacheRead(){try{const x=JSON.parse(localStorage.getItem(CACHE)||'null');return x&&Array.isArray(x.data)&&x.data.length===cities.length?x:null}catch{return null}}
+function cacheWrite(data){try{localStorage.setItem(CACHE,JSON.stringify({savedAt:Date.now(),data}))}catch{}}
+function setUpdated(time,cached=false){const el=q('#weatherUpdated136');if(!el)return;el.textContent=`Aktualizované ${new Intl.DateTimeFormat('sk-SK',{hour:'2-digit',minute:'2-digit'}).format(new Date(time))}${cached?' · uložené údaje':''}`}
+async function loadWeather(force=false){
+ const button=q('#weatherRefresh136'),content=q('#weatherContent136'),cached=cacheRead();if(!force&&cached&&Date.now()-cached.savedAt<MAX_AGE){forecast=cached.data;setUpdated(cached.savedAt);render();return}
+ button?.classList.add('loading');if(!forecast&&content)content.innerHTML='<div class="weather-state136"><div><b>Načítavam počasie…</b><span>Pripravujem predpoveď pre krajské mestá.</span></div></div>';
+ try{const response=await fetch(API,{cache:'no-store'});if(!response.ok)throw new Error('weather');const data=await response.json();if(!Array.isArray(data)||data.length!==cities.length)throw new Error('weather');forecast=data;cacheWrite(data);setUpdated(Date.now());render()}catch{if(cached){forecast=cached.data;setUpdated(cached.savedAt,true);render()}else if(content)content.innerHTML='<div class="weather-state136"><div><b>Počasie sa nepodarilo načítať</b><span>Skontroluj internetové pripojenie a skús to znova.</span><br><button class="solid" id="weatherRetry136" type="button">Skúsiť znova</button></div></div>';q('#weatherRetry136')?.addEventListener('click',()=>loadWeather(true))}finally{button?.classList.remove('loading')}
+}
+function dayBar(){const times=forecast?.[0]?.daily?.time||[];return `<div class="weather-daybar136">${times.map((x,i)=>`<button type="button" class="${i===selectedDay?'active':''}" data-weather-day136="${i}">${i===0?'Dnes':dayName(x)}<small>${shortDate(x)}</small></button>`).join('')}</div>`}
+function metrics(d,i){return `<div class="weather-metrics136"><span>💧 ${round(d.precipitation_probability_max?.[i])} %</span><span>💨 ${round(d.wind_speed_10m_max?.[i])} km/h</span></div>`}
+function cityCard(city,i,day){const d=forecast[i].daily,[icon,label]=weatherInfo(d.weather_code?.[day]);return `<button type="button" class="weather-city-card136" data-weather-open-city136="${i}"><div class="weather-card-top136"><strong>${city.name}</strong><span class="weather-icon136" aria-hidden="true">${icon}</span></div><div class="weather-condition136">${label}</div><div class="weather-temp136"><b>${round(d.temperature_2m_max?.[day])}°</b><span>${round(d.temperature_2m_min?.[day])}°</span></div>${metrics(d,day)}</button>`}
+function renderOverview(){return `${dayBar()}<div class="weather-overview136">${cities.map((x,i)=>cityCard(x,i,selectedDay)).join('')}</div>`}
+function renderDetail(index){const city=cities[index],d=forecast[index].daily;return `<div class="weather-detail-head136"><div><h3>${city.name}</h3><p>Päťdňová predpoveď</p></div><button type="button" class="weather-back136" id="weatherBack136">← Všetky mestá</button></div><div class="weather-forecast136">${d.time.map((date,i)=>{const [icon,label]=weatherInfo(d.weather_code?.[i]);return `<article class="weather-day-card136 ${i===0?'today':''}"><strong>${i===0?'Dnes':dayName(date)}</strong><small>${dayName(date,true)}</small><div class="weather-icon136" aria-hidden="true">${icon}</div><div class="weather-condition136">${label}</div><div class="weather-temp136"><b>${round(d.temperature_2m_max?.[i])}°</b><span>${round(d.temperature_2m_min?.[i])}°</span></div>${metrics(d,i)}</article>`}).join('')}</div>`}
+function render(){const content=q('#weatherContent136');if(!content||!forecast)return;content.innerHTML=(selectedCity<0?renderOverview():renderDetail(selectedCity))+`<div class="weather-foot136">Predpovedné údaje: <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a> · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a></div>`;qa('[data-weather-day136]',content).forEach(b=>b.onclick=()=>{selectedDay=Number(b.dataset.weatherDay136);render()});qa('[data-weather-open-city136]',content).forEach(b=>b.onclick=()=>selectCity(Number(b.dataset.weatherOpenCity136)));q('#weatherBack136')?.addEventListener('click',()=>selectCity(-1));content.scrollTop=0}
+function selectCity(index){selectedCity=index;qa('[data-weather-city136]').forEach(b=>b.classList.toggle('active',Number(b.dataset.weatherCity136)===index));render()}
+function openWeather(){const layer=ensureLayer();previousOverflow=document.body.style.overflow;document.body.style.overflow='hidden';layer.classList.remove('hidden');loadWeather();setTimeout(()=>q('#weatherClose136')?.focus(),0)}
+function closeWeather(){q('#weatherLayer136')?.classList.add('hidden');document.body.style.overflow=previousOverflow}
+function ensureNav(){const nav=q('#navlinks');if(nav&&!q('#weatherNav136',nav)){const b=document.createElement('button');b.type='button';b.id='weatherNav136';b.textContent='Počasie';b.onclick=openWeather;nav.append(b)}const actions=q('.nav-actions');if(actions&&!q('#weatherMobile136',actions)){const b=document.createElement('button');b.type='button';b.id='weatherMobile136';b.className='iconbtn weather-mobile136';b.title='Počasie';b.setAttribute('aria-label','Otvoriť počasie');b.textContent='☀';b.onclick=openWeather;actions.insertBefore(b,actions.firstChild)}}
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!q('#weatherLayer136')?.classList.contains('hidden'))closeWeather()});const nav=q('#navlinks');if(nav)new MutationObserver(ensureNav).observe(nav,{childList:true});ensureNav();
 })();
 </script>
 </body></html>
