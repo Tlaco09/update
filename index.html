@@ -6955,4 +6955,26 @@ let queued=false;new MutationObserver(()=>{if(queued)return;queued=true;requestA
 ensureBell();mobileMenu();views();guaranteeEmoji();
 })();
 </script>
+<style id="v155-header-fix-style">
+/* Zvonček patrí iba prihlásenému používateľovi. */
+.nav-actions #headerNotifBtn.v155-logged-out,#headerNotifBtn.v155-logged-out{display:none!important;visibility:hidden!important;pointer-events:none!important}
+</style>
+<script id="v155-header-fix-script">
+(()=>{
+'use strict';
+const q=(s,r=document)=>r.querySelector(s),same=(a,b)=>String(a)===String(b),me=()=>typeof currentUser==='function'?currentUser():null;
+const persist=()=>{try{save()}catch{}};
+function signedIn(){return!!me()&&!data.session?.admin}
+function syncBell(){const bell=q('#headerNotifBtn'),panel=q('#headerNotifPanel'),u=me();if(!bell)return;const show=signedIn();bell.classList.toggle('v155-logged-out',!show);bell.setAttribute('aria-hidden',String(!show));bell.tabIndex=show?0:-1;if(!show){panel?.classList.add('hidden');const count=q('#headerNotifCount');count?.classList.add('hidden');return}const unread=(data.notifications||[]).filter(n=>same(n.userId,u.id)&&!n.read).length,count=q('#headerNotifCount');if(count){count.textContent=unread>99?'99+':String(unread);count.classList.toggle('hidden',!unread)}}
+function openNotifications(){const u=me(),panel=q('#headerNotifPanel');if(!u||!panel)return;const opening=panel.classList.contains('hidden');panel.classList.toggle('hidden',!opening);if(!opening)return;const items=(data.notifications||[]).filter(n=>same(n.userId,u.id)).sort((a,b)=>new Date(b.createdAt)-new Date(a.createdAt));for(const n of items)n.read=true;persist();const box=q('#headerNotificationList');if(box)box.innerHTML=items.length?items.map(n=>`<article class="notification-item"><span class="notification-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"></path><path d="M10 21h4"></path></svg></span><div><strong>${String(n.text||'Notifikácia').replace(/[<>]/g,'')}</strong><small>${new Date(n.createdAt).toLocaleString('sk-SK')}</small></div></article>`).join(''):'<div class="profile-empty">Žiadne notifikácie.</div>';syncBell()}
+const targets={stories:'#storiesMobile137',weather:'#weatherMobile136',video:'#videoMobile142',theme:'#themeToggle'};
+function runMobileAction(kind){const source=q(targets[kind]);if(!source)return false;source.click();const menu=q('#v154MobileMenu'),panel=q('.v154-mobile-panel',menu);menu?.classList.remove('open');panel?.classList.add('hidden');return true}
+window.addEventListener('pointerdown',e=>{const bell=e.target.closest('#headerNotifBtn');if(bell){if(!signedIn()){e.preventDefault();e.stopImmediatePropagation();return}e.preventDefault();e.stopImmediatePropagation();openNotifications();return}const item=e.target.closest('[data-v154-menu]');if(item){e.preventDefault();e.stopImmediatePropagation();runMobileAction(item.dataset.v154Menu)}},true);
+window.addEventListener('click',e=>{const item=e.target.closest('[data-v154-menu]');if(item){e.preventDefault();e.stopImmediatePropagation()}},true);
+let queued=false;new MutationObserver(()=>{if(queued)return;queued=true;requestAnimationFrame(()=>{queued=false;syncBell()})}).observe(document.body,{childList:true,subtree:true,attributes:true,attributeFilter:['class']});
+document.addEventListener('submit',e=>{if(e.target.closest('#userLoginForm'))setTimeout(syncBell,80)},true);
+document.addEventListener('click',e=>{if(e.target.closest('#logoutBtn,#adminLogout,#logoutAdmin'))setTimeout(syncBell,80)},true);
+syncBell();
+})();
+</script>
 </body></html>
