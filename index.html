@@ -7246,7 +7246,7 @@ setInterval(()=>{decorateCard();injectItemFields();ensureAdmin()},3500);decorate
 })();
 </script>
 <!-- v163 – kompaktné mobilné vysielanie a spoľahlivý fullscreen -->
-<style id="v163-pulse24-mobile-fit">
+<style id="v163-pulse24-mobile-fit" media="not all">
 @media(max-width:900px){
  .p158-stage{container-type:size}
  .p158-top{left:3%;top:3%}.p158-brand{gap:4px;min-height:0}.p158-logo{width:20px;height:20px;border-radius:5px}.p158-wordmark{font-size:12px}.p158-wordmark i{width:3px;height:3px}.p158-live{margin-left:2px!important;padding:3px 5px!important;border-radius:4px;font-size:6px!important;letter-spacing:.07em}
@@ -7265,9 +7265,34 @@ setInterval(()=>{decorateCard();injectItemFields();ensureAdmin()},3500);decorate
  #p158Stage:fullscreen,#p158Stage.p158-mobile-fullscreen{position:fixed!important;z-index:17000!important;left:50%!important;top:50%!important;width:min(100dvw,177.7778dvh)!important;height:auto!important;max-width:none!important;max-height:none!important;aspect-ratio:16/9!important;transform:translate(-50%,-50%)!important}
 }
 </style>
-<script id="v163-mobile-fullscreen-script">
+<script id="v163-mobile-fullscreen-script" type="application/x-disabled">
 (()=>{'use strict';
  window.addEventListener('click',event=>{const button=event.target.closest?.('#p158Fullscreen');if(!button||!matchMedia('(max-width:900px)').matches)return;event.preventDefault();event.stopImmediatePropagation();const stage=document.querySelector('#p158Stage'),paint=active=>{stage?.classList.toggle('p158-mobile-fullscreen',active);button.textContent=active?'⤢':'⛶';button.title=active?'Opustiť celú obrazovku':'Celá obrazovka'};if(stage?.classList.contains('p158-mobile-fullscreen')){paint(false);return}if(document.fullscreenElement){document.exitFullscreen?.().finally(()=>paint(false));return}const fallback=()=>{if(!document.fullscreenElement)paint(true)};try{const request=stage?.requestFullscreen?.();if(request?.then)request.then(()=>setTimeout(fallback,120)).catch(fallback);else fallback()}catch{fallback()}},true);
+})();
+</script>
+<!-- v164 – mobil je presne zmenšený televízny obraz 1280 × 720 -->
+<style id="v164-uniform-mobile-tv">
+.p164-tv-canvas{display:contents}
+@media(max-width:900px){
+ #p158Stage{width:min(100dvw,177.7778dvh)!important;height:auto!important;aspect-ratio:16/9!important;max-width:100dvw!important;max-height:100dvh!important;overflow:hidden!important}
+ #p158Stage>.p164-tv-canvas{display:block;position:absolute;left:50%;top:50%;width:1280px;height:720px;overflow:hidden;transform:translate(-50%,-50%) scale(var(--p164-scale,.3));transform-origin:center center}
+ #p158Stage .p158-top{left:3.2%;top:3.4%}#p158Stage .p158-brand{gap:11px}#p158Stage .p158-logo{width:58px;height:58px;border-radius:11px}#p158Stage .p158-wordmark{font-size:31px}#p158Stage .p158-wordmark i{width:7px;height:7px}#p158Stage .p158-live{margin-left:5px!important;padding:7px 10px!important;border-radius:7px;font-size:11px!important}
+ #p158Stage .p158-controls{right:2%;top:3.2%;gap:7px;opacity:.9}#p158Stage .p158-controls button{min-width:40px;height:40px;padding:0 11px;border-radius:11px;font-size:16px}#p158Stage .p158-controls .p158-program-btn{display:inline-flex!important;align-items:center;font-size:10px}
+ #p158Stage .p158-scene-host{bottom:74px!important}#p158Stage .p158-scene{padding:10% 6.5% 8%!important}#p158Stage .p158-copy{width:min(82%,1120px)}#p158Stage .p158-meta{gap:8px}#p158Stage .p158-category,#p158Stage .p158-breaking{padding:7px 11px;border-radius:7px;font-size:13px}#p158Stage .p158-tag{padding:6px 9px;font-size:11px}#p158Stage .p158-copy h1{margin:13px 0 12px;font-size:66px!important;line-height:1.02}#p158Stage .p158-copy p{font-size:20px;line-height:1.45;-webkit-line-clamp:3}#p158Stage .p158-source{margin-top:15px;font-size:12px}#p158Stage .p158-slug{left:6.5%;top:18%;width:5px}
+ #p158Stage .p158-widget{width:92%;height:76%!important;max-height:76%;overflow:hidden;transform:none!important;align-self:auto!important}#p158Stage .p158-widget .live-score{min-width:1050px}#p158Stage .p158-scene:has(.p158-widget.election){align-items:center!important;padding:10% 6.5% 8%!important}#p158Stage .p158-widget.election{height:76%!important;margin:auto!important;transform:none!important}
+ #p158Stage .p158-weather{width:min(92%,1300px);max-height:none;overflow:visible}#p158Stage .p158-weather-head{margin-bottom:15px}#p158Stage .p158-weather-head span{font-size:11px}#p158Stage .p158-weather-head h1{margin:4px 0 0;font-size:58px}#p158Stage .p158-weather-head small{font-size:11px}#p158Stage .p158-city-grid{grid-template-columns:repeat(4,1fr);gap:9px}#p158Stage .p158-city{padding:13px 14px;border-radius:14px}#p158Stage .p158-city strong{font-size:18px}#p158Stage .p158-city-icon{font-size:40px}#p158Stage .p158-city-temp{gap:8px}#p158Stage .p158-city-temp b{font-size:44px}#p158Stage .p158-city-temp span{font-size:14px}
+ #p158Stage .p158-forecast{border-spacing:0 5px;table-layout:auto}#p158Stage .p158-forecast th:nth-child(n),#p158Stage .p158-forecast td:nth-child(n){display:table-cell!important}#p158Stage .p158-forecast th{padding:4px 9px;font-size:9px}#p158Stage .p158-forecast th:first-child,#p158Stage .p158-forecast td:first-child{width:auto}#p158Stage .p158-forecast td{padding:6px 10px;font-size:inherit;line-height:normal}#p158Stage .p158-forecast td:first-child{font-size:11px}#p158Stage .p158-day-weather{gap:5px}#p158Stage .p158-day-weather i{font-size:16px}#p158Stage .p158-day-weather b,#p158Stage .p158-day-weather small{font-size:inherit}
+ #p158Stage .p158-lower{bottom:28px!important;height:42px!important}#p158Stage .p158-clock{min-width:86px;padding:0 13px;font-size:13px}#p158Stage .p158-ticker-label{min-width:92px;padding:0 15px;font-size:10px}#p158Stage .p158-ticker-track{font-size:16px}#p158Stage .p158-ticker-item{padding:0 25px}#p158Stage .p158-ticker-item:after{margin-left:50px}#p158Stage .p158-slide-state{right:3.2%;bottom:80px!important;gap:9px;font-size:9px}#p158Stage .p158-progress{width:125px;height:2px}
+ #p158Stage .p158-program{padding:6% 8%}#p158Stage .p158-program-head h2{font-size:32px}#p158Stage .p158-program-row{grid-template-columns:145px minmax(0,1fr)!important;padding:11px 15px}#p158Stage .p158-program-row time{font-size:inherit}#p158Stage .p158-program-row strong{font-size:inherit}#p158Stage .p158-program-row small{font-size:inherit}
+}
+@media(max-width:900px) and (orientation:portrait){#p158Stage.p164-mobile-full{position:fixed!important;z-index:18000!important;left:50%!important;top:50%!important;width:min(100dvh,177.7778dvw)!important;height:auto!important;max-width:none!important;max-height:none!important;transform:translate(-50%,-50%) rotate(90deg)!important;transform-origin:center!important}}
+@media(max-width:900px) and (orientation:landscape){#p158Stage.p164-mobile-full{position:fixed!important;z-index:18000!important;left:50%!important;top:50%!important;width:min(100dvw,177.7778dvh)!important;height:auto!important;max-width:none!important;max-height:none!important;transform:translate(-50%,-50%)!important}}
+</style>
+<script id="v164-uniform-mobile-tv-script">
+(()=>{'use strict';
+ const mount=stage=>{if(!stage||stage.querySelector(':scope>.p164-tv-canvas'))return;const canvas=document.createElement('div');canvas.className='p164-tv-canvas';while(stage.firstChild)canvas.append(stage.firstChild);stage.append(canvas);const fit=()=>stage.style.setProperty('--p164-scale',Math.min(stage.clientWidth/1280,stage.clientHeight/720));new ResizeObserver(fit).observe(stage);fit()};
+ const scan=()=>mount(document.querySelector('#p158Stage'));new MutationObserver(scan).observe(document.body,{childList:true,subtree:true});scan();
+ window.addEventListener('click',event=>{const button=event.target.closest?.('#p158Fullscreen');if(!button||!matchMedia('(max-width:900px)').matches)return;event.preventDefault();event.stopImmediatePropagation();const stage=document.querySelector('#p158Stage'),active=!stage.classList.contains('p164-mobile-full');stage.classList.toggle('p164-mobile-full',active);button.textContent=active?'⤢':'⛶';button.title=active?'Opustiť celú obrazovku':'Celá obrazovka';requestAnimationFrame(()=>window.dispatchEvent(new Event('resize')))},true);
 })();
 </script>
 </body></html>
