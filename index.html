@@ -7295,4 +7295,12 @@ setInterval(()=>{decorateCard();injectItemFields();ensureAdmin()},3500);decorate
  window.addEventListener('click',event=>{const button=event.target.closest?.('#p158Fullscreen');if(!button||!matchMedia('(max-width:900px)').matches)return;event.preventDefault();event.stopImmediatePropagation();const stage=document.querySelector('#p158Stage'),active=!stage.classList.contains('p164-mobile-full');stage.classList.toggle('p164-mobile-full',active);button.textContent=active?'⤢':'⛶';button.title=active?'Opustiť celú obrazovku':'Celá obrazovka';requestAnimationFrame(()=>window.dispatchEvent(new Event('resize')))},true);
 })();
 </script>
+<!-- v165 – väčšie mobilné ovládanie Pulse24 -->
+<style id="v165-mobile-controls">
+@media(max-width:900px){
+ #p158Stage .p158-controls{right:2.5%;top:3.5%;gap:14px}
+ #p158Stage .p158-controls button{display:inline-grid!important;place-items:center;min-width:112px!important;width:112px;height:112px!important;padding:0!important;border-width:3px;border-radius:26px!important;font-size:42px!important}
+ #p158Stage .p158-controls .p158-program-btn{display:inline-grid!important;min-width:210px!important;width:210px;font-size:25px!important;letter-spacing:.04em}
+}
+</style>
 </body></html>
